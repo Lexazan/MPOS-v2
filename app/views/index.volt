@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Phalcon PHP Framework</title>
+    {{ get_title() }}
     {{ stylesheet_link('bootstrap/css/bootstrap.css') }}
     {{ stylesheet_link('bootstrap/css/bootstrap-responsive.css') }}
+    {{ stylesheet_link('css/style.css') }}
 	</head>
 	<body>
 		{{ content() }}
