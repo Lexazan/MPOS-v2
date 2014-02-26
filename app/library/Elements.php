@@ -14,6 +14,10 @@ class Elements extends Phalcon\Mvc\User\Component
                 'caption' => 'Home',
                 'action' => 'index'
             ),
+            'about' => array(
+                'caption' => 'About',
+                'action' => 'index'
+            )
         ),
         'pull-right' => array(
             'session' => array(
