@@ -87,8 +87,15 @@ class SessionController extends ControllerBase
           $user = Users::findFirstByEmail($email);
           if ($user != false) {
             if ($this->security->checkHash($password, $user->password)) {
+              $login_ip = $this->request->getClientAddress();
+              $message = 'Last login was from ' . $user->login_ip . ' at ' . $user->login_ts;
+              if ($login_ip == $user->login_ip) {
+                $this->flash->notice($message);
+              } else {
+                $this->flash->warning($message);
+              }
               $user->login_ts = new Phalcon\Db\RawValue('NOW()');
-              $user->login_ip = $this->request->getClientAddress();
+              $user->login_ip = $login_ip;
               if ($user->save() == false) {
                 foreach ($user->getMessages() as $message) {
                   $this->flash->error((string) $message);
