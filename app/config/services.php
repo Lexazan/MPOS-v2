@@ -80,8 +80,8 @@ $di->set('session', function () {
 });
 
 /**
-  *  * Register the flash service with custom CSS classes
-  *   */
+ * Register the flash service with custom CSS classes
+ */
 $di->set('flash', function(){
     return new Phalcon\Flash\Direct(array(
         'error' => 'alert alert-error',
@@ -91,8 +91,21 @@ $di->set('flash', function(){
 });
 
 /**
+ * Register security module with custom options
+ */
+$di->set('security', function(){
+
+  $security = new Phalcon\Security();
+
+  //Set the password hashing factor to 12 rounds
+  $security->setWorkFactor(100);
+
+  return $security;
+}, true);
+
+/**
  * Register a user component
  */
 $di->set('elements', function(){
-    return new Elements();
+  return new Elements();
 });

@@ -4,8 +4,8 @@ return new \Phalcon\Config(array(
     'database' => array(
         'adapter'     => 'Mysql',
         'host'        => '127.0.0.1',
-        'username'    => 'someuser',
-        'password'    => 'somepass',
+        'username'    => 'root',
+        'password'    => 'root',
         'dbname'      => 'mposv2',
     ),
     'application' => array(
