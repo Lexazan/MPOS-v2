@@ -91,19 +91,6 @@ $di->set('flash', function(){
 });
 
 /**
- * Register security module with custom options
- */
-$di->set('security', function(){
-
-  $security = new Phalcon\Security();
-
-  //Set the password hashing factor to 12 rounds
-  $security->setWorkFactor(100);
-
-  return $security;
-}, true);
-
-/**
  * Register a user component
  */
 $di->set('elements', function(){
