@@ -1,7 +1,8 @@
 <?php
 
 
-use Phalcon\Mvc\Model\Validator\Email as Email;
+use Phalcon\Mvc\Model\Validator\Email as Email,
+    Phalcon\Mvc\Model\Validator\Uniqueness as Uniqueness;
 
 class Users extends \Phalcon\Mvc\Model
 {
@@ -58,7 +59,23 @@ class Users extends \Phalcon\Mvc\Model
             new Email(
                 array(
                     "field"    => "email",
-                    "required" => true,
+                    "required" => true
+                )
+            )
+        );
+        $this->validate(
+            new Uniqueness(
+                array(
+                    "field"   => "display_name",
+                    "message" => "Display name is invalid or not available."
+                )
+            )
+        );
+        $this->validate(
+            new Uniqueness(
+                array(
+                    "field"   => "email",
+                    "message" => "Email is invalid or not available."
                 )
             )
         );
